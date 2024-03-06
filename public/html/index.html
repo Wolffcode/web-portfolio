@@ -17,24 +17,21 @@
         <div id="heading-name" >
             <span id="nav-name" class="heading-text">&#60wolffcode<span id="enfasisdot">.</span>&#47&#62</span>
         </div>
+        <input type="checkbox" id="sidebar-active">
+        <label for="sidebar-active" class="open-sidebar-button">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z"/></svg>
+        </label>
+        <label id="overlay" for="sidebar-active"></label>
         <ul class="links">
+            <label for="sidebar-active"class="close-sidebar-button" >
+                <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg>
+            </label>
             <li class="nav-li-element focus"><a href="#home">Home</a></li>
-            <li class="nav-li-element"><a href="#projects">Proyectos</a></li>
+            <label for="sidebar-active"><li class="nav-li-element"><a href="#projects">Proyectos</a></li></label>
             <li class="nav-li-element"><a href="#about">Perfil</a></li>
             <li class="nav-li-element"><a href="#contact">Contacto</a></li>
         </ul>
     </nav>
-    <div id="mobile-menu">
-        <i  class="fa-solid fa-bars fa-2xl" style="color: #e3e3e3;"></i>
-    </div>
-    <div id="mobile-menu-list" class="inactive">
-        <ul id="mobile-nav-ul">
-            <li class="nav-li-element mobile"><a href="#home">Home</a></li>
-            <li class="nav-li-element mobile"><a href="#projects">Proyectos</a></li>
-            <li class="nav-li-element mobile"><a href="#about">Perfil</a></li>
-            <li class="nav-li-element mobile"><a href="#contact">Contacto</a></li>
-        </ul>
-    </div>
     <section id="home">
         <article id="presentation">
             <h1 class="heading-text">Carlos Moreno</h1>
@@ -178,8 +175,8 @@
             
         </form>
     </section>
-    <button id="superbutton">
-        <span id="superspan">button</span>
+    <button id="superbutton" class="fadeInLeft">
+        <span id="superspan" >button</span>
     </button>
     <script src="/js/global.js" ></script>
 </body>
