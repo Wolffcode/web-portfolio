@@ -23,7 +23,9 @@
 
         /*  */
 }
-
+html{
+    scroll-behavior: smooth;
+}
 *{
     margin: 0;
     padding:0;
@@ -55,9 +57,6 @@ span{
     margin:12px 0
 }
 nav{
-    /* background-color: #000b1a; */
-    /* background-image: radial-gradient(circle,hsla(222,100%,11%,1) 0%,transparent 50%); */
-    /* filter: blur(4px); */
     backdrop-filter: blur(4px);
     width: 100%;
     height: 70px;
@@ -138,13 +137,12 @@ svg{
 #presentation h1{
     color: var(--enfasis-color-2);
 }
-#presentation i{
+#presentation svg{
     margin: 24px;
-    transform:scale(1.3);
-    color:var(--hover-text-color)
+    fill:var(--hover-text-color)
 }
-#presentation i:hover{
-    color: var(--enfasis-color-2);
+#presentation svg:hover{
+    fill: var(--enfasis-color-2);
 }
 #media-links i{
     position: relative;
@@ -306,39 +304,7 @@ svg{
     transition: background-color, .2s ease-in-out;
 }
 
-#superbutton{
-    overflow: hidden;
-    animation-duration: 1s;
-    /* animation-fill-mode: both; */
-    width: fit-content;
-    border: 0;
-    background-image: linear-gradient(
-        150deg,
-        #9500ff,
-        #09f,
-        #00ddff
-    );
-    border-radius: 8px;
-    color:white;
-    display: flex;
-    font: size 18px;
-    padding: 4px;
-    cursor: pointer;
-    transition: .3s;
-}
-#superbutton span{
-    background-color: #111;
-    padding: 16px 24px;
-    border-radius: 6px;
-    transition: .3s;
 
-}
-#superbutton:hover span{
-    background: none;
-}
-#superbutton:active{
-    transform: scale(0.9);
-}
 
 @media screen and (max-width:767px){
    section{
@@ -349,6 +315,8 @@ svg{
    } 
    nav{
     flex-direction: column;
+    height: 55px;
+    background-color: var(--dark-background-color);
    }
    h3{
     margin-left: 20px;
@@ -369,7 +337,7 @@ svg{
     z-index: 10;
     width: 200px;
     height: 100vh;
-    background-color: skyblue;
+    background-color: var(--dark-background-color);
     box-shadow: -5px 0 5px rgba(0,0,0,0.25);
     margin: 0;
     transition:  0.75s ease-out;
@@ -396,6 +364,20 @@ svg{
     left: 0;
     z-index: 9;
    }
+   #overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--dark-background-color);
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    opacity: 0.8;
+    z-index: -1;
+  }
 
    #home{
     display: flex;
@@ -427,6 +409,12 @@ svg{
    .job span{
     margin: 0;
    }
+   #job-list{
+    gap: 40px;
+   }
+   #job-list div{
+    width: 40%;
+   }
    #contact{
     padding: 70px 0;
    }
@@ -437,8 +425,120 @@ svg{
 
 
     /* tablets styles */
-@media screen and (min-width:767px) and(max-width:1024px){
 
+@media screen and (min-width:768px) and (max-width:1024px){
+    section{
+        max-width: 700px;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+       } 
+       nav{
+        flex-direction: column;
+        height: 55px;
+        background-color: var(--dark-background-color);
+       }
+       h3{
+        margin-left: 20px;
+       }
+       #heading-name, .links{
+        margin: 0 8px;
+       }
+       #heading-name{
+        position: inherit;
+        left: 0;
+       }
+       .links{
+        position: fixed;
+        right: -100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        z-index: 10;
+        width: 350px;
+        height: 100vh;
+        background-color: var(--dark-background-color);
+        box-shadow: -5px 0 5px rgba(0,0,0,0.25);
+        margin: 0;
+        transition:  0.75s ease-out;
+       }
+       .open-sidebar-button{
+        margin: 20px 20px 0 0;
+        display: block;
+        transform: scale(2);
+       }
+       .close-sidebar-button{
+        margin: 16px 0 0 116px;
+        display: block;
+        transform: scale(2)
+       }
+       #sidebar-active:checked ~ .links{
+        right: 0;
+       }
+       #sidebar-active:checked ~ #overlay{
+        backdrop-filter: blur(4px);
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+       }
+       #overlay::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--dark-background-color);
+        background-size: cover;
+        background-position: center;
+        filter: blur(20px);
+        opacity: 0.8;
+        z-index: -1;
+      }
+    
+       #home{
+        display: flex;
+        margin: 0;
+       }
+       #profile-pic {
+        display: none;
+       }
+       #projects-cards{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 20px;
+       }
+       #projects-cards article{
+        width: 100%;
+       }
+       #projects img{
+        width: 370px;
+       }
+       #bio{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+       }
+       #bio-text h3, #job-experience h3{
+        margin-left: 0;
+       }
+       .job span{
+        margin: 0;
+       }
+       #job-list{
+        gap: 40px;
+       }
+       #job-list div{
+        width: 40%;
+       }
+       #contact{
+        padding: 70px 0;
+       }
+       #contact form{
+        width: 80%;
+       }
 }
-
-/* background-image: linear-gradient( 111.4deg,  rgba(7,7,9,1) 6.5%, rgba(27,24,113,1) 93.2% ); */
