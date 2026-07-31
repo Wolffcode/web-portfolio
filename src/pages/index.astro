@@ -1,11 +1,35 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="wolffcode — Frontend Developer">
+  <!-- Gradient blobs background -->
+  <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary opacity-20 blur-[120px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4 w-[500px] h-[500px] rounded-full bg-accent opacity-15 blur-[120px]"></div>
+  </div>
+
+  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+    <p class="text-muted-foreground text-sm tracking-widest uppercase mb-4">
+      Frontend Developer
+    </p>
+
+    <h1 class="text-6xl font-bold gradient-text mb-6">
+      wolffcode
+    </h1>
+
+    <p class="text-foreground/70 text-lg max-w-md leading-relaxed">
+      Construyendo interfaces rápidas, accesibles y bien diseñadas.
+      En camino al fullstack.
+    </p>
+
+    <div class="mt-10 flex gap-4">
+      <a href="#projects" class="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium glow-blue hover:opacity-90 transition-opacity">
+        Ver proyectos
+      </a>
+      <a href="#contact" class="px-6 py-3 rounded-lg border border-border text-foreground hover:bg-secondary transition-colors">
+        Contacto
+      </a>
+    </div>
+  </main>
 </Layout>
