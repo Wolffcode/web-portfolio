@@ -1,5 +1,7 @@
 export const ui = {
-    'nav.home': 'Inicio',
+    'nav.about': 'Sobre mi',
+    'nav.skills': 'Skills/Stack',
     'nav.projects': 'Proyectos',
-    'nav.blog': 'Blog',
+    'nav.career':'Experiencia', 
+    'nav.contact':'Contacto',
   } as const;

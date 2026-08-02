@@ -1,0 +1,13 @@
+---
+import Navbar from '../../components/navbar.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="wolffcode — Frontend Developer">
+  <!-- Gradient blobs background -->
+   <div class="fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary opacity-20 blur-[120px]"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4 w-[500px] h-[500px] rounded-full bg-accent opacity-15 blur-[120px]"></div>
+  </div>
+  	<Navbar/>
+</Layout>

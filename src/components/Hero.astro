@@ -1,0 +1,38 @@
+---
+  import { useTranslations } from "../i18n/utils";
+  import { Image } from "astro:assets";
+  import profilePhoto from "../../public/photo.jpg"
+
+  interface Props {
+    lang?:  'en' | 'es'
+  }
+
+  const lang = Astro.currentLocale as 'en' | 'es';
+  const path = Astro.url.pathname;
+
+  const enPath = lang === 'es' ? path.replace(/^\/es/, '') || '/' : path;
+  const esPath = lang === 'en' ? `/es${path}` : path;
+  const t = useTranslations(lang);
+---
+
+<section class="min-h-screen grid grid-cols-3 p-12 pt-24 border items-center">
+  <div class="col-span-2 flex flex-col  gap-6 pb-12 px-8">
+    <span class="border border-primary/40 bg-primary/10 text-primary text-xs font-medium tracking-widest uppercase rounded-full px-4 py-1.5 w-fit">
+      Frontend Developer
+    </span>
+    <h2 class="text-7xl font-bold gradient-text leading-none tracking-tight">Carlos Moreno</h2>
+    <div class="flex flex-col gap-2">
+      <p class="text-muted-foreground text-base font-medium tracking-wide">+2 años de experiencia</p>
+      <p class="text-foreground/70 text-lg leading-relaxed max-w-md">
+        Desarrollando aplicaciones escalables enfocado en rendimiento, accesibilidad y experiencia del usuario.
+      </p>
+    </div>
+  </div>
+  <div class="flex justify-center">
+    <Image src={profilePhoto} alt="Screenshot del proyecto" width={300} height={400} class="object-cover object-top mask-[radial-gradient(ellipse_90%_100%_at_50%_100%,black_80%,transparent_100%),linear-gradient(to_bottom,black_55%,transparent_100%)] mask-intersect rounded-4xl"/>
+  </div>
+</section>
+
+<!-- 
+object-cover object-top mask-[radial-gradient(ellipse_90%_100%_at_50%_100%,black_80%,transparent_100%),linear-gradient(to_bottom,black_55%,transparent_100%)] mask-intersect
+-->

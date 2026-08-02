@@ -1,15 +1,17 @@
 ---
+import Hero from '../components/Hero.astro';
+import Navbar from '../components/Navbar.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="wolffcode — Frontend Developer">
   <!-- Gradient blobs background -->
-  <div class="fixed inset-0 -z-10 overflow-hidden">
+   <div class="fixed inset-0 -z-10 overflow-hidden">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary opacity-20 blur-[120px]"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4 w-[500px] h-[500px] rounded-full bg-accent opacity-15 blur-[120px]"></div>
   </div>
 
-  <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
+  <!-- <main class="min-h-screen flex flex-col items-center justify-center px-6 text-center">
     <p class="text-muted-foreground text-sm tracking-widest uppercase mb-4">
       Frontend Developer
     </p>
@@ -31,5 +33,7 @@ import Layout from '../layouts/Layout.astro';
         Contacto
       </a>
     </div>
-  </main>
+  </main> -->
+	<Navbar/>
+  <Hero/>
 </Layout>
