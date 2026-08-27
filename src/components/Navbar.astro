@@ -1,52 +1,78 @@
----                                                                                
-  import { useTranslations } from '../i18n/utils';                                                             
-                                                                                                                
-  interface Props {                                                                                            
-    lang?: 'en' | 'es';                                                                                        
-  }               
+---
+import { useTranslations } from '../i18n/utils';
 
-  const lang = Astro.currentLocale as 'en' | 'es';
-  const path = Astro.url.pathname;                                          
-   
-  
-  const enPath = lang === 'es' ? path.replace(/^\/es/, '') || '/' : path;
-  const esPath = lang === 'en' ? `/es${path}` : path;
-  const t = useTranslations(lang);
----                                                                                                          
-                                                               
-<nav class="fixed top-0 left-0 right-0 z-50 text-xl flex flex-row justify-between gap-8 py-4 px-8 bg-background/60 backdrop-blur-md border-b border-blue-500/25">           
-  <div class="flex flex-row">
-    <span>Carlos Moreno</span>
+interface Props {
+  lang?: 'en' | 'es';
+}
+
+const lang = Astro.currentLocale as 'en' | 'es';
+const path = Astro.url.pathname;
+
+const enPath = lang === 'es' ? path.replace(/^\/es/, '') || '/' : path;
+const esPath = lang === 'en' ? `/es${path}` : path;
+const t = useTranslations(lang);
+
+const linkClass = "border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5 transition-all duration-200";
+---
+
+<nav class="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-md border-b border-blue-500/25">
+
+  <!-- Top bar -->
+  <div class="flex items-center justify-between px-5 sm:px-8 py-4">
+
+    <span class="text-base font-semibold">Carlos Moreno</span>
+
+    <!-- Desktop links -->
+    <div class="hidden md:flex gap-8 text-sm">
+      <a class={linkClass} href="#hero">{t('nav.about')}</a>
+      <a class={linkClass} href="#about">{t('nav.skills')}</a>
+      <a class={linkClass} href="#projects">{t('nav.projects')}</a>
+      <a class={linkClass} href="#career">{t('nav.career')}</a>
+      <a class={linkClass} href="#contact">{t('nav.contact')}</a>
+    </div>
+
+    <!-- Right: lang switcher + hamburger -->
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-1 text-sm font-medium">
+        <a href={enPath} class={lang === 'en' ? 'text-primary' : 'text-muted-foreground hover:text-foreground transition-colors'}>EN</a>
+        <span class="text-muted-foreground">/</span>
+        <a href={esPath} class={lang === 'es' ? 'text-primary' : 'text-muted-foreground hover:text-foreground transition-colors'}>ES</a>
+      </div>
+
+      <!-- Hamburger (mobile only) -->
+      <button id="hamburger" class="md:hidden flex flex-col justify-center gap-1.5 p-1" aria-label="Menú">
+        <span class="w-5 h-0.5 bg-foreground rounded transition-all"></span>
+        <span class="w-5 h-0.5 bg-foreground rounded transition-all"></span>
+        <span class="w-5 h-0.5 bg-foreground rounded transition-all"></span>
+      </button>
+    </div>
+
   </div>
-  <div class="flex flew-row gap-8">
-    <a class="border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5
-    transition-all duration-200 " href="#hero">{t('nav.about')}</a>
-    <a class="border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5
-    transition-all duration-200 " href="#about">{t('nav.skills')}</a>
-    <a class="border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5
-    transition-all duration-200 " href="#projects">{t('nav.projects')}</a>
-    <a class="border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5
-    transition-all duration-200 " href="#career">{t('nav.career')}</a>
-    <a class="border-b-2 border-transparent hover:border-primary hover:-translate-y-0.5
-    transition-all duration-200 " href="#contact">{t('nav.contact')}</a>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden flex-col border-t border-border/40 px-5 py-4 gap-4 text-sm bg-background/80 backdrop-blur-md">
+    <a class={linkClass} href="#hero">{t('nav.about')}</a>
+    <a class={linkClass} href="#about">{t('nav.skills')}</a>
+    <a class={linkClass} href="#projects">{t('nav.projects')}</a>
+    <a class={linkClass} href="#career">{t('nav.career')}</a>
+    <a class={linkClass} href="#contact">{t('nav.contact')}</a>
   </div>
-  <div class="flex items-center gap-1 text-sm font-medium">                 
-    <a href={enPath} class={lang === 'en' ? 'text-primary' :
-      'text-muted-foreground hover:text-foreground transition-colors'}>
-      EN
-    </a>
-    <span class="text-muted-foreground">/</span>
-    <a href={esPath} class={lang === 'es' ? 'text-primary' :
-      'text-muted-foreground hover:text-foreground transition-colors'}>
-      ES
-    </a>                                                                    
-  </div>                                                                
+
 </nav>
 
-<!-- 
-  relative after:absolute after:bottom-0 after:left-1/2
-  after:-translate-x-1/2 after:w-0 after:h-0.5 after:bg-gradient-to-r       
-  after:from-transparent after:via-primary after:to-transparent
-  hover:after:w-full after:transition-all after:duration-300                
-  hover:-translate-y-0.5 transition-transform
--->
+<script>
+  const hamburger = document.getElementById('hamburger')!;
+  const mobileMenu = document.getElementById('mobile-menu')!;
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  });
+
+  mobileMenu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+    });
+  });
+</script>

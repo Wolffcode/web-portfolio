@@ -6,8 +6,8 @@ interface Props {
   lang?:  'en' | 'es'
 }
 
-  const lang = Astro.currentLocale as 'en' | 'es';
-  const t = useTranslations(lang);
+const lang = Astro.currentLocale as 'en' | 'es';
+const t = useTranslations(lang);
 
 const mainStack = [
   { name: 'TypeScript', icon: 'devicon:typescript' },
@@ -26,23 +26,21 @@ const secondary = [
 ];
 ---
 
-<section id="about" class="min-h-screen grid grid-cols-2 gap-16 px-20 py-24">
+<section id="about" class="min-h-screen grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 px-5 sm:px-8 lg:px-20 py-14 lg:py-24">
 
   <!-- Stack -->
-  <div class="flex flex-col justify-center gap-10">
+  <div class="flex flex-col justify-center gap-8 md:gap-10">
 
     <div class="flex flex-col gap-4">
       <span class="text-xs font-medium tracking-widest uppercase text-muted-foreground">{t('about.stack')}</span>
       <div class="grid grid-cols-3 gap-3">
         {mainStack.map((tech) => (
-          <div class="flex flex-col items-center justify-center gap-3 p-4 rounded-xl bg-card border border-primary/40">
+          <div class="flex flex-col items-center justify-center gap-3 p-3 md:p-4 rounded-xl bg-card border border-primary/40">
             {tech.icon
-              ? <Icon name={tech.icon} class="w-8 h-8" />
-              : <span class="text-lg font-bold text-muted-foreground">MF</span>
+              ? <Icon name={tech.icon} class="w-7 h-7 md:w-8 md:h-8" />
+              : <span class="text-base md:text-lg font-bold text-muted-foreground">MF</span>
             }
-            <span class="text-xs text-center text-muted-foreground">
-              {tech.name}
-            </span>
+            <span class="text-xs text-center text-muted-foreground">{tech.name}</span>
           </div>
         ))}
       </div>
@@ -52,10 +50,10 @@ const secondary = [
       <span class="text-xs font-medium tracking-widest uppercase text-muted-foreground">{t('about.workwith')}</span>
       <ul class="flex flex-col gap-2">
         {secondary.map((tech) => (
-          <li class="flex items-center gap-3 text-foreground/60 text-base">
+          <li class="flex items-center gap-3 text-foreground/60 text-sm md:text-base">
             {tech.icon
-              ? <Icon name={tech.icon} class={`w-6 h-6 shrink-0${tech.invert ? ' brightness-0 invert' : ''}`} />
-              : <span class="w-6 h-6 shrink-0" />
+              ? <Icon name={tech.icon} class={`w-5 h-5 md:w-6 md:h-6 shrink-0${tech.invert ? ' brightness-0 invert' : ''}`} />
+              : <span class="w-5 h-5 md:w-6 md:h-6 shrink-0" />
             }
             {tech.name}
           </li>
@@ -68,12 +66,11 @@ const secondary = [
   <!-- About me -->
   <div class="flex flex-col justify-center gap-6">
     <div class="flex flex-col gap-2">
-      <span class="text-l font-medium tracking-widest uppercase text-muted-foreground gradient-text leading-tight">{t('about.about')}</span>
-      <h2 class="text-4xl font-bold gradient-text leading-tight">Fullstack developer</h2>
+      <span class="text-sm font-medium tracking-widest uppercase text-muted-foreground gradient-text leading-tight">{t('about.about')}</span>
+      <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold gradient-text leading-tight">Fullstack developer</h2>
       <p class="text-muted-foreground text-sm">{t('hero.experience')}</p>
     </div>
-
-    <div class="flex flex-col gap-4 text-foreground/70 text-base leading-relaxed">
+    <div class="flex flex-col gap-4 text-foreground/70 text-sm md:text-base leading-relaxed">
       <p>{t('about.p1')}</p>
       <p>{t('about.p2')}</p>
       <p>{t('about.p3')}</p>

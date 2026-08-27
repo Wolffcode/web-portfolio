@@ -1,32 +1,39 @@
 ---
-  import { useTranslations } from "../i18n/utils";
-  import { Image } from "astro:assets";
-  import profilePhoto from "../../public/photo.jpg"
+import { useTranslations } from "../i18n/utils";
+import { Image } from "astro:assets";
+import profilePhoto from "../../public/photo.jpg"
 
-  interface Props {
-    lang?:  'en' | 'es'
-  }
+interface Props {
+  lang?:  'en' | 'es'
+}
 
-  const lang = Astro.currentLocale as 'en' | 'es';
-  const t = useTranslations(lang);
+const lang = Astro.currentLocale as 'en' | 'es';
+const t = useTranslations(lang);
 ---
 
-<section id="hero" class="min-h-screen grid grid-cols-3 p-12 pt-24 items-center">
-  <div class="col-span-2 flex flex-col  gap-6 pb-12 px-8">
+<section id="hero" class="min-h-screen grid grid-cols-1 md:grid-cols-3 px-5 sm:px-8 lg:px-12 pt-24 pb-14 lg:pt-24 lg:pb-12 items-center gap-8 md:gap-0">
+
+  <!-- Text content -->
+  <div class="md:col-span-2 flex flex-col gap-5 md:gap-6 md:pb-12 md:px-8 text-center md:text-left items-center md:items-start">
     <span class="border border-primary/40 bg-primary/10 text-primary text-xs font-medium tracking-widest uppercase rounded-full px-4 py-1.5 w-fit">
       Fullstack Developer
     </span>
-    <h2 class="text-7xl font-bold gradient-text leading-none tracking-tight">Carlos Moreno</h2>
+    <h2 class="text-4xl sm:text-5xl lg:text-7xl font-bold gradient-text leading-none tracking-tight">Carlos Moreno</h2>
     <div class="flex flex-col gap-2">
-      <p class="text-muted-foreground text-base font-medium tracking-wide">{t('hero.experience')}</p>
-      <p class="text-foreground/70 text-lg leading-relaxed max-w-md">{t('hero.resume')}</p>
+      <p class="text-muted-foreground text-sm sm:text-base font-medium tracking-wide">{t('hero.experience')}</p>
+      <p class="text-foreground/70 text-base lg:text-lg leading-relaxed max-w-md">{t('hero.resume')}</p>
     </div>
   </div>
-  <div class="flex justify-center">
-    <Image src={profilePhoto} alt="Screenshot del proyecto" width={300} height={400} class="object-cover object-top mask-[radial-gradient(ellipse_90%_100%_at_50%_100%,black_80%,transparent_100%),linear-gradient(to_bottom,black_55%,transparent_100%)] mask-intersect rounded-4xl"/>
-  </div>
-</section>
 
-<!-- 
-object-cover object-top mask-[radial-gradient(ellipse_90%_100%_at_50%_100%,black_80%,transparent_100%),linear-gradient(to_bottom,black_55%,transparent_100%)] mask-intersect
--->
+  <!-- Photo (hidden on mobile, visible md+) -->
+  <div class="hidden md:flex justify-center">
+    <Image
+      src={profilePhoto}
+      alt="Carlos Moreno"
+      width={300}
+      height={400}
+      class="object-cover object-top mask-[radial-gradient(ellipse_90%_100%_at_50%_100%,black_80%,transparent_100%),linear-gradient(to_bottom,black_55%,transparent_100%)] mask-intersect rounded-4xl"
+    />
+  </div>
+
+</section>
