@@ -1,5 +1,10 @@
 ---
-import Navbar from '../../components/navbar.astro';
+import About from '../../components/About.astro';
+import Career from '../../components/Career.astro';
+import Contact from '../../components/Contact.astro';
+import Hero from '../../components/Hero.astro';
+import Navbar from '../../components/Navbar.astro';
+import Projects from '../../components/Projects.astro';
 import Layout from '../../layouts/Layout.astro';
 ---
 
@@ -9,5 +14,10 @@ import Layout from '../../layouts/Layout.astro';
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary opacity-20 blur-[120px]"></div>
     <div class="absolute top-1/2 left-1/2 -translate-x-1/4 -translate-y-1/4 w-[500px] h-[500px] rounded-full bg-accent opacity-15 blur-[120px]"></div>
   </div>
-  	<Navbar/>
+  <Navbar/>
+  <Hero/>
+  <About/>
+  <Projects/>
+  <Career/>
+  <Contact/>
 </Layout>

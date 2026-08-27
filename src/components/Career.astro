@@ -1,0 +1,70 @@
+---
+import { useTranslations } from "../i18n/utils";
+import { experience } from '../data/experience';
+
+interface Props {
+  lang?:  'en' | 'es'
+}
+
+const lang = Astro.currentLocale as 'en' | 'es';
+const t = useTranslations(lang);
+
+function formatDate(date: Date) {
+  return date.toLocaleDateString(lang === 'es' ? 'es-ES' : 'en-US', { month: 'short', year: 'numeric' });
+}
+---
+
+<section id="career" class="min-h-screen flex flex-col justify-center px-20 py-24 gap-12">
+
+  <div class="flex flex-col gap-2">
+    <!-- <span class="text-xs font-medium tracking-widest uppercase text-muted-foreground">Trayectoria</span> -->
+    <h2 class="text-4xl font-bold gradient-text leading-tight">{t('career.title')}</h2>
+  </div>
+
+  <div class="relative flex flex-col gap-0">
+
+    <!-- Línea vertical del timeline -->
+    <div class="absolute left-[7px] top-2 bottom-2 w-px bg-border" />
+
+    {experience.map((job) => {
+      const t = job.translations[lang];
+      return (
+      <div class="relative flex gap-10 pb-12 last:pb-0">
+
+        <!-- Dot -->
+        <div class="shrink-0 mt-1.5">
+          <div class={`w-[15px] h-[15px] rounded-full border-2 ${job.current ? 'bg-primary border-primary' : 'bg-background border-border'}`} />
+        </div>
+
+        <!-- Content -->
+        <div class="flex flex-col gap-4 flex-1">
+
+          <div class="flex items-start justify-between gap-4">
+            <div class="flex flex-col gap-0.5">
+              <h3 class="text-lg font-semibold text-foreground">{t.title}</h3>
+              <span class="text-primary text-sm font-medium">{job.company}</span>
+            </div>
+            <span class="text-xs text-muted-foreground whitespace-nowrap pt-1">
+              {formatDate(job.startDate)} — {job.current ? (lang === 'es' ? 'Presente' : 'Present') : formatDate(job.endDate!)}
+            </span>
+          </div>
+
+          <p class="text-muted-foreground text-sm leading-relaxed">{t.description}</p>
+
+          <ul class="flex flex-col gap-2">
+            {t.bullets.map((bullet) => (
+              <li class="flex gap-3 text-sm text-foreground/70">
+                <span class="text-primary mt-0.5 shrink-0">▹</span>
+                {bullet}
+              </li>
+            ))}
+          </ul>
+
+        </div>
+      </div>
+      );
+    })}
+
+  </div>
+
+</section>

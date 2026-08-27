@@ -8,24 +8,18 @@
   }
 
   const lang = Astro.currentLocale as 'en' | 'es';
-  const path = Astro.url.pathname;
-
-  const enPath = lang === 'es' ? path.replace(/^\/es/, '') || '/' : path;
-  const esPath = lang === 'en' ? `/es${path}` : path;
   const t = useTranslations(lang);
 ---
 
-<section class="min-h-screen grid grid-cols-3 p-12 pt-24 border items-center">
+<section id="hero" class="min-h-screen grid grid-cols-3 p-12 pt-24 items-center">
   <div class="col-span-2 flex flex-col  gap-6 pb-12 px-8">
     <span class="border border-primary/40 bg-primary/10 text-primary text-xs font-medium tracking-widest uppercase rounded-full px-4 py-1.5 w-fit">
-      Frontend Developer
+      Fullstack Developer
     </span>
     <h2 class="text-7xl font-bold gradient-text leading-none tracking-tight">Carlos Moreno</h2>
     <div class="flex flex-col gap-2">
-      <p class="text-muted-foreground text-base font-medium tracking-wide">+2 años de experiencia</p>
-      <p class="text-foreground/70 text-lg leading-relaxed max-w-md">
-        Desarrollando aplicaciones escalables enfocado en rendimiento, accesibilidad y experiencia del usuario.
-      </p>
+      <p class="text-muted-foreground text-base font-medium tracking-wide">{t('hero.experience')}</p>
+      <p class="text-foreground/70 text-lg leading-relaxed max-w-md">{t('hero.resume')}</p>
     </div>
   </div>
   <div class="flex justify-center">

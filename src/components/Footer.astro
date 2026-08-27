@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon/components';
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border/40 px-20 py-10 flex items-center justify-between text-xs text-muted-foreground">
+
+  <p>
+    © {year} — Todos los derechos reservados
+    <a href="#hero" class="text-foreground underline underline-offset-4 hover:text-primary transition-colors ml-1">wolffcode</a>
+  </p>
+
+  <div class="flex items-center gap-8">
+    <a href="#about" class="hover:text-foreground transition-colors">About</a>
+    <a href="#projects" class="hover:text-foreground transition-colors">Proyectos</a>
+    <a href="#career" class="hover:text-foreground transition-colors">Experiencia</a>
+    <a href="#contact" class="hover:text-foreground transition-colors">Contacto</a>
+  </div>
+
+  <div class="flex items-center gap-2">
+    <span>Hecho con</span>
+    <Icon name="devicon:astro" class="w-4 h-4 brightness-0 invert" />
+    <span>&</span>
+    <Icon name="devicon:tailwindcss" class="w-4 h-4" />
+  </div>
+
+</footer>
