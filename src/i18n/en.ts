@@ -24,5 +24,9 @@ export const ui = {
 
     'contact.title': 'Contact me',
     'contact.p1': 'Shall we work together?',
-    'contact.p2': `I'm available for projects and new opportunities. Feel free to leave me a message.`
+    'contact.p2': `I'm available for projects and new opportunities. Feel free to leave me a message.`,
+
+    'footer.rights': 'All rights reserved',
+    'footer.madewith': 'created with',
+
   } as const;

@@ -1,24 +1,29 @@
 ---
+import { useTranslations } from "../i18n/utils";
 import { Icon } from 'astro-icon/components';
+
+const lang = Astro.currentLocale as 'en' | 'es';
+const t = useTranslations(lang);
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-border/40 px-5 sm:px-8 lg:px-20 py-8 flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-4 text-xs text-muted-foreground text-center sm:text-left">
 
   <p>
-    © {year} — Todos los derechos reservados
+    © {year} — {t('footer.rights')}
     <a href="#hero" class="text-foreground underline underline-offset-4 hover:text-primary transition-colors ml-1">wolffcode</a>
   </p>
 
   <div class="flex items-center gap-5 sm:gap-8">
-    <a href="#about" class="hover:text-foreground transition-colors">About</a>
-    <a href="#projects" class="hover:text-foreground transition-colors">Proyectos</a>
-    <a href="#career" class="hover:text-foreground transition-colors">Experiencia</a>
-    <a href="#contact" class="hover:text-foreground transition-colors">Contacto</a>
+    <a href="#about" class="hover:text-foreground transition-colors">{t('nav.about')}</a>
+    <a href="#about" class="hover:text-foreground transition-colors">{t('nav.skills')}</a>
+    <a href="#projects" class="hover:text-foreground transition-colors">{t('nav.projects')}</a>
+    <a href="#career" class="hover:text-foreground transition-colors">{t('nav.career')}</a>
+    <a href="#contact" class="hover:text-foreground transition-colors">{t('nav.contact')}</a>
   </div>
 
   <div class="flex items-center gap-2">
-    <span>Hecho con</span>
+    <span>{t('footer.madewith')}</span>
     <Icon name="devicon:astro" class="w-4 h-4 brightness-0 invert" />
     <span>&</span>
     <Icon name="devicon:tailwindcss" class="w-4 h-4" />

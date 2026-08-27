@@ -8,6 +8,8 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://wolffcode.io',
+
   vite: {
     plugins: [tailwindcss()]
   },
